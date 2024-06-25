@@ -7,3 +7,4 @@ for i in range(n):
     sum+=temp
 print("Sum of numbers:-",sum)
 print("Average of numbers:-",sum/n)
+# Hehe
