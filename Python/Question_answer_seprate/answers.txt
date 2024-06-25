@@ -1,0 +1,22 @@
+Mohr’s salt is Fe(SO₄)(NH₄)₂(SO₄)·6H₂O.
+Chlorides are present in water primarily as salts such as sodium chloride (NaCl), potassium chloride (KCl), magnesium chloride (MgCl2), and calcium chloride (CaCl2).
+The concentration of chlorides which gives an unacceptable taste to water is around 250 mg/L. At this level, water starts to taste “salty” according to the US Environmental Protection Agency (EPA).
+The chloride content in a water sample can be determined at a pH of around 6.5 to 9 using Mohr’s method.
+Ag2CrO4 precipitates after AgCl because the solubility product of Ag2CrO4 is lower than that of AgCl, so it precipitates only after all chloride ions have reacted.
+It is called Mohr’s method because it was developed by the German chemist Karl Friedrich Mohr.
+The chemical formula of bleaching powder is Ca(ClO)2.
+Idometry, also known as iodometric titration, is a volumetric chemical analysis method where the appearance or disappearance of elementary iodine indicates the end point.
+Available chlorine refers to the amount of chlorine released in water from chlorine-containing compounds capable of disinfecting.
+The approximate percentage of available chlorine in commercial bleaching powder is typically around 30-35%.
+Yes, bleaching powder is hygroscopic in nature, meaning it absorbs moisture from the air.
+When bleaching powder reacts with water, it forms calcium hydroxide and hypochlorous acid: [ \text{Ca(OCl)}_2 + \text{H}_2\text{O} \rightarrow \text{Ca(OH)}_2 + \text{HOCl} ]. The chemical name of Hypochlorous acid is simply Hypochlorous acid, with the chemical formula HOCl.
+Bakelite’s chemical structural formula is based on the linkage of phenol units with aldehyde units, particularly formaldehyde, resulting in a complex network polymer.
+Thermosetting polymers are materials that cure, or set, irreversibly when heated. They cannot be remolded after initial forming. Thermoplastic polymers, on the other hand, can be heated, shaped, and cooled repeatedly.
+Substitution in phenol occurs at the ortho and para positions due to the electron-donating effect of the hydroxyl group, which activates these positions for electrophilic substitution reactions.
+Bakelite is used in electrical insulators, radio and telephone casings, kitchenware, jewelry, pipe stems, children’s toys, and more due to its nonconductivity and heat-resistant properties.
+The polymerization that occurs in the formation of bakelite is a condensation polymerization involving phenol and formaldehyde.
+
+
+
+
+
