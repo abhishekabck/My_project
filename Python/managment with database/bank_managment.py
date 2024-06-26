@@ -141,7 +141,8 @@ def show_details():
     
     
 def transction(typ):
-    if (typ == -1):
+    if (typ == -1): # Withdraw
+        pass
             
 
 def bank_balance():
@@ -162,9 +163,9 @@ def login_menu():
     if (choice == 1):
         show_details()
     elif (choice == 2):
-        transction(typ = "-1")
+        transction("-1")
     elif (choice == 3):
-        transction(typ = "+1")
+        transction("+1")
     elif (choice == 4):
         bank_balance()
     elif choice == 5:
