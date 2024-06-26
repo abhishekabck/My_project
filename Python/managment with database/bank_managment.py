@@ -23,7 +23,7 @@ class tranc:
         self.db = db
     def change(self,amount):
         self.cur.execute(f'Update bank_amount set amount = amount + {amount} where a_no = "{self.a_no}";')
-        self.db.commit()
+        print("Ammount Updated Successfully..")
         
 class details:
     def __init__(self,name = "User",
@@ -151,15 +151,30 @@ def show_details():
     print(f"--> Account No:- {det.a_no}\n--> Name:- {det.name}\n--> Age:- {det.age}")
     print(f"--> Mobile Number:- {det.phone}\n--> Email :- {det.email}\n--> Address:- {det.address}")
     
+def check_auth(amount,typ):
+    return True
+
 
 def transction(typ):
+    tr.a_no = det.a_no
     if (typ == -1): # Withdraw
-        tr.a_no = det.a_no
-        
-            
+        am = int(input("Enter the Ammount you wish to withdraw from your account:-"))
+        while (not check_auth(am,"w")):
+            print("Warning ::You can only withdraw 20000.")
+        tr.change(am*int(typ))
+    else :
+        am = int(input("Enter the Ammount you wish to Add in your account:-"))
+        while (not check_auth(am,"a")):
+            print("Warning ::You can only add upto 50000.")
+        tr.change(am*int(typ))
+    db.cnx.commit()
+
 
 def bank_balance():
-    pass
+    db.cur.execute("Select ammount from bank_money:-")
+    c_amount = int(list(db.cur)[-1])
+    print("Your Current Bank Ammount is::",c_amount)
+
 
 def bank_statment():
     pass
