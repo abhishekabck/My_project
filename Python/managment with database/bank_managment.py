@@ -22,7 +22,7 @@ class tranc:
         self.cur = cursor
         self.db = db
     def change(self,amount):
-        self.cur.execute(f'Update bank_amount set amount = amount + {amount} where a_no = "{self.a_no}";')
+        self.cur.execute(f'Update bank_money set amount = amount + {amount} where acc_no = "{self.a_no}";')
         print("Ammount Updated Successfully..")
         
 class details:
@@ -135,7 +135,7 @@ def Sign_Up():
         update_signup()
     
 def acc_details(account):
-    db.cur.execute(f'Select * from bank_credentials where acc_no == "{account}"')
+    db.cur.execute(f'Select * from bank_credentials where acc_no = "{account}"')
     data = list(db.cur)
     if len(data) == 0:
         return False
@@ -150,37 +150,71 @@ def show_details():
     print("Personal Details are given as:-")
     print(f"--> Account No:- {det.a_no}\n--> Name:- {det.name}\n--> Age:- {det.age}")
     print(f"--> Mobile Number:- {det.phone}\n--> Email :- {det.email}\n--> Address:- {det.address}")
+    choice()
     
 def check_auth(amount,typ):
-    return True
+    if typ == "w":
+        if amount>20000:
+            return True
+        return False
+    elif typ == "a" :
+        if amount >50000:
+            return True
+        return False
 
 
 def transction(typ):
     tr.a_no = det.a_no
-    if (typ == -1): # Withdraw
+    if (typ == -1): # Withdraw Money
         am = int(input("Enter the Ammount you wish to withdraw from your account:-"))
-        while (not check_auth(am,"w")):
+        while (check_auth(am,"w")):
             print("Warning ::You can only withdraw 20000.")
         tr.change(am*int(typ))
-    else :
+        choice()
+    elif (typ == 1): # Deposite Money
         am = int(input("Enter the Ammount you wish to Add in your account:-"))
-        while (not check_auth(am,"a")):
+        while (check_auth(am,"a")):
             print("Warning ::You can only add upto 50000.")
         tr.change(am*int(typ))
+        choice()
     db.cnx.commit()
+
+def choice():
+    if input("\nDo You wish to continue (y/n):-").lower() == "y":
+        print("\n")
+        login_menu()
+    else :
+        print("::<>::Thank You! For Choosing Union Bank of India::<>::")
+        exit(0)
 
 
 def bank_balance():
-    db.cur.execute("Select ammount from bank_money:-")
-    c_amount = int(list(db.cur)[-1])
-    print("Your Current Bank Ammount is::",c_amount)
+    db.cur.execute("Select ammount from bank_money")
+    c_amount = int(list(db.cur)[0][0])
+    print("\nYour Current Bank Ammount is::",c_amount)
+    choice()
 
 
 def bank_statment():
-    pass
+    db.cur.execute(f"Select * from bank_statements where acc_no = \"{det.a_no}\"")
+    data_ar = tuple(db.cur)
+    os.system("cls")
+    print(f" User Details:- \n Account No. :: {det.a_no}\n Name :: {det.name} \n")
+    print("Withdrawal Deposite Date Time")
+    for tp1 in data_ar:
+        if int(tp1[-1]) < 0 :
+            print(f"\t{int(tp1[-1])*-1}\t \t\t\t {tp1[1]}")
+        else :
+            print(f" \t\t\t {int(tp1[-1])} {tp1[1]}")
+    choice()
 
 def logout():
-    pass
+    det.name = det.a_no = det.address = det.age = det.carrier = det.email = det.m_pin = det.phone = None
+    print("log_out Successfull")
+    if input("Do you wish to Go back Main menu (y/n):-").lower() == "y":
+        main()
+    else :
+        exit()
 
 
 def login_menu():
@@ -211,9 +245,10 @@ def login_menu():
 
 def login():
     print("\n Please Fill the following Details to login your Account")
-    det.a_no = input(" Enter Your Account Number:-")
+    det.a_no = input(" Enter Your 10 Digit Account Number:-")
     if acc_details(det.a_no) == False:
-        print("Wrong Account Number..")
+        print("Account Number Does not Found\n::Please Try another Account Number::\n\n")
+        login()
         # Need to write fucntion to fing account Number
     else :
         if (input(" Please Enter Your M_pin:- ") == det.carrier[-1][-1]):
