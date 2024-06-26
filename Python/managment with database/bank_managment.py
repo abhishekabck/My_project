@@ -17,9 +17,14 @@ class database:
         self.cur = self.cnx.cursor()
 
 class tranc:
-    def __inti__(self,a_no = None):
+    def __inti__(self,a_no = None,cursor = None,db = None):
         self.a_no = a_no
-    def change = 
+        self.cur = cursor
+        self.db = db
+    def change(self,amount):
+        self.cur.execute(f'Update bank_amount set amount = amount + {amount} where a_no = "{self.a_no}";')
+        self.db.commit()
+        
 class details:
     def __init__(self,name = "User",
                  a_no = "UN00BOI000",
@@ -38,7 +43,9 @@ class details:
     
 det = details()
 db = database()
-
+tr = tranc()
+tr.db = db.cnx
+tr.cur = db.cur
 
 def main():
     #print("=======================================================================")
@@ -144,9 +151,10 @@ def show_details():
     print(f"--> Account No:- {det.a_no}\n--> Name:- {det.name}\n--> Age:- {det.age}")
     print(f"--> Mobile Number:- {det.phone}\n--> Email :- {det.email}\n--> Address:- {det.address}")
     
-    
+
 def transction(typ):
     if (typ == -1): # Withdraw
+        tr.a_no = det.a_no
         
             
 
