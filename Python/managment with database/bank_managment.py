@@ -15,7 +15,11 @@ class database:
             database = "director"
         )
         self.cur = self.cnx.cursor()
-    
+
+class tranc:
+    def __inti__(self,a_no = None):
+        self.a_no = a_no
+    def change = 
 class details:
     def __init__(self,name = "User",
                  a_no = "UN00BOI000",
@@ -133,6 +137,7 @@ def acc_details(account):
         return True
     
 def show_details():
+    # Prints the Details of the current login User
     os.system("cls")
     print("--->> Union Bank of India <<----")
     print("Personal Details are given as:-")
@@ -142,7 +147,7 @@ def show_details():
     
 def transction(typ):
     if (typ == -1): # Withdraw
-        pass
+        
             
 
 def bank_balance():
