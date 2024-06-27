@@ -5,25 +5,27 @@ import mysql.connector
 
 print('''       WELCOME IN UNION BANK OF INDIA''')
 
-class database:
-    def __init__(self) :
-        self.cnx = db = mysql.connector.connect(
-            user = "root",
-            password = "5844",
-            port = "3306",
-            host = "localhost",
-            database = "director"
-        )
-        self.cur = self.cnx.cursor()
 
-class tranc:
-    def __inti__(self,a_no = None,cursor = None,db = None):
-        self.a_no = a_no
-        self.cur = cursor
-        self.db = db
-    def change(self,amount):
-        self.cur.execute(f'Update bank_money set amount = amount + {amount} where acc_no = "{self.a_no}";')
-        print("Ammount Updated Successfully..")
+class database:
+    """
+    This Class Fucntion is just to connects The program to Database
+    """
+    def __init__(self) :
+        while True:
+            try:  
+                self.cnx = db = mysql.connector.connect(
+                    user = "root",
+                    password = "5844",
+                    port = "3306",
+                    host = "localhost",
+                    database = "director"
+                )
+                self.cur = self.cnx.cursor()
+                break
+            except Exception as e:
+                print("The Database Connection has Following Error:-")
+                print(e)
+                
         
 class details:
     def __init__(self,name = "User",
@@ -43,9 +45,6 @@ class details:
     
 det = details()
 db = database()
-tr = tranc()
-tr.db = db.cnx
-tr.cur = db.cur
 
 def main():
     #print("=======================================================================")
@@ -164,18 +163,19 @@ def check_auth(amount,typ):
 
 
 def transction(typ):
-    tr.a_no = det.a_no
     if (typ == -1): # Withdraw Money
         am = int(input("Enter the Ammount you wish to withdraw from your account:-"))
         while (check_auth(am,"w")):
             print("Warning ::You can only withdraw 20000.")
-        tr.change(am*int(typ))
+        db.cur.execute(f'Update bank_money set amount = amount + {amount} where acc_no = "{det.a_no}";')
+        print("Ammount Updated Successfully..")
         choice()
     elif (typ == 1): # Deposite Money
         am = int(input("Enter the Ammount you wish to Add in your account:-"))
         while (check_auth(am,"a")):
             print("Warning ::You can only add upto 50000.")
-        tr.change(am*int(typ))
+        db.cur.execute(f'Update bank_money set amount = amount + {amount} where acc_no = "{det.a_no}";')
+        print("Ammount Updated Successfully..")
         choice()
     db.cnx.commit()
 
