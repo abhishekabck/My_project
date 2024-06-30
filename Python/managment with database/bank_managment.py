@@ -6,7 +6,11 @@ from re import search as srch
 
 print('''       WELCOME IN UNION BANK OF INDIA''')
 
+
 class database:
+    """
+    This Class Fucntion is just to connects The program to Database
+    """
     def __init__(self) :
         self.cnx = mysql.connector.connect(
             user = "root",
