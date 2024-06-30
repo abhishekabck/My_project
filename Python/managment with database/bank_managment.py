@@ -6,6 +6,32 @@ from re import search as srch
 
 print('''       WELCOME IN UNION BANK OF INDIA''')
 
+class request:
+    def __init__(self,account,m_pin,reference):
+        self.a_no = account
+        self.m_pin = m_pin
+        self.ref = reference
+    
+    def connect(self) -> bool:
+        if acc_details(self.a_no) == False:
+            raise "Account Does Not exist"
+        if det.carrier[-1] != self.m_pin:
+            raise "M_pin is Correct"
+        return True
+            
+    def transfer(self,amount):
+        self.connect()
+        db.cur.execute(f"select balance from bank_money where acc_no = \"{self.a_no}\"")
+        if int(list(db.cur)[0][0])<amount:
+            raise "Insufficient Balance"
+        """
+        Need to create commercial account for Grocery
+        Need to make Transfer account to account option 
+        Need to apply it in Customer to Grocey option
+        Done"""
+        
+        
+
 
 class database:
     """
