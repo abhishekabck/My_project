@@ -12,7 +12,8 @@ mpin char(4)
 create table bank_statements(
 Acc_no char(10) not null primary key,
 date_time date not null default (current_timestamp),
-action long not null);
+action long not null,
+reference char(50));
 
 create table bank_money(
 Acc_no char(10) not null primary key,

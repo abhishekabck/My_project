@@ -1,6 +1,13 @@
 {
     "configurations": [
         {
+            "type": "java",
+            "name": "string_ops",
+            "request": "launch",
+            "mainClass": "Java.string_ops",
+            "projectName": "Projects_cbb39858"
+        },
+        {
             "name": "C/C++: g++.exe build and debug active file",
             "type": "cppdbg",
             "request": "launch",
