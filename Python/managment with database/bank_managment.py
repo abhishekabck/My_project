@@ -30,9 +30,28 @@ class request:
         Need to apply it in Customer to Grocey option
         Done"""
         
+
+class commercial:
+    def __init__(self) -> None:
+        self.host = None
+        self.Account = None
+        self.is_connected = False
+        self.m_pin = None
+        self.details = []
+    
+    def _connect(self,Account:str,m_pin:str,host:str = None) ->None:
+        db.cur.execute(f"Select * from commercial_banks where acc_no = \"{Account}\"")
+        data = list(db.cur)
+        if data == []:
+            raise "Account Does Not exist"
+        else :
+            if host is None:
+                self.host = host = data[0][1]
+            elif (host.lower() != data[0][1].lower()):
+                raise "Invalid Host Name"
+                
         
-
-
+        
 class database:
     """
     This Class Fucntion is just to connects The program to Database
