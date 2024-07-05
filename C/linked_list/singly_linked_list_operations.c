@@ -30,7 +30,11 @@ void append(struct node* ll,int data){
     struct node* new_node = (struct node*)malloc(sizeof(struct node));
     new_node->data = data;
     new_node->next = NULL;
-    if (ll->next = NULL){
+    if (ll == null){
+        ll->data = data;
+        ll->next = null;
+    }
+    else if (ll->next == NULL){
         ll->next = new_node;
         return;
     }
@@ -56,19 +60,16 @@ void show(struct node* ll){
 int main(){
     struct node* head = (struct node*)malloc(sizeof(struct node));
     head = create_ll();
-    head = ins_at_beg(head,45);
+    append(head,20);
     printf("\n");
     show(head);
-    head = ins_at_beg(head,20);
+    append(head,34);
     printf("\n");
     show(head);
-    head = ins_at_beg(head,34);
+    append(head,40);
     printf("\n");
     show(head);
-    head = ins_at_beg(head,40);
-    printf("\n");
-    show(head);
-    head = ins_at_beg(head,50);
+    append(head,50);
     printf("\n");
     show(head);
     head = ins_at_beg(head,10);
