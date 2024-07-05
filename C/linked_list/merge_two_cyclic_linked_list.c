@@ -9,7 +9,7 @@ struct node{
 
 struct node* create_node(){
     struct node* head = (struct node*)malloc(sizeof(struct node));
-    printf("\nEnter 1 value of your node:-");
+    printf("\nEnter 1 value of your Cyclic Linked List:-");
     scanf("%d",&head->val);
     head->next = head; // Connecting itself
     return head;
@@ -17,7 +17,7 @@ struct node* create_node(){
 
 void append(struct node* head,int data){
     struct node* temp = (struct node*)malloc(sizeof(struct node));
-    temp = head->next;
+    temp = head;
     while (temp->next != head){
         temp->val = data;
         temp=temp->next;
@@ -41,11 +41,12 @@ void show(struct node* head){
 }
 
 int max(struct node* head){
-    if (head->next = head){
+    if (head->next == head){
         return head->val;
     }
     int max = INT_MIN;
     struct node* temp = (struct node*)malloc(sizeof(struct node));
+    temp = head;
     while (temp->next != head){
         max = (temp->val>max)?temp->val:max;
         temp = temp->next;
@@ -57,30 +58,31 @@ int max(struct node* head){
 int main(){
     struct node *cll1,*cll2;
     int data;
-    printf("\nInsert Values in First Cyclic Linked List:-");
+    printf("\n::<>::Insert Values in First Cyclic Linked List::<>::");
     cll1 = create_node(); // First Cyclic Linked List
     // Inserting Values in First Cyclic Linked List 
     for (int i = 1; i<5; i++){
-        printf("\nEnter the %d value of your Cyclic Linked list:- ",i+1);
+        printf("Enter %d value of your Cyclic Linked list:- ",i+1);
         scanf("%d",&data);
         append(cll1,data);
     }
-    printf("\nInsert Values in Second Cyclic Linked List:- ");
+    printf("\n::<>::Insert Values in Second Cyclic Linked List::<>:: ");
     cll2 = create_node(); // Second Cyclic Linked List
     // Inserting Vlaues in Second Cyclic Linked List  
     for (int i = 1; i<5; i++){
-        printf("\nEnter the %d value of your Cyclic Linked list:- ",i+1);
+        printf("Enter %d value of your Cyclic Linked list:- ",i+1);
         scanf("%d",&data);
         append(cll2,data);
     }
 
     //Max of cll1
-    int max1,max2;
-    max1 = max(cll1);
-    max2 = max(cll2);
-    printf("Max Element of First cyclic LInked list:- %d\nMax Element of Second cyclic LInked list:-%d",max1,max2);
+    // int max1,max2;
+    // max1 = max(cll1);
+    // max2 = max(cll2);
+    //printf("\nMax Element of First cyclic LInked list:- %d\nMax Element of Second cyclic LInked list:-%d\n",max1,max2);
+    printf("Elements of First Linked list::\n");
     show(cll1);
-    printf("\n");
+    printf("\nElements of Second Linked list::\n");
     show(cll2);
     return 0;
 
