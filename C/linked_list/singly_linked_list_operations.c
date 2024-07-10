@@ -60,19 +60,9 @@ void show(struct node* ll){
 int main(){
     struct node* head = (struct node*)malloc(sizeof(struct node));
     head = create_ll();
-    append(head,20);
-    printf("\n");
-    show(head);
-    append(head,34);
-    printf("\n");
-    show(head);
-    append(head,40);
-    printf("\n");
-    show(head);
-    append(head,50);
-    printf("\n");
-    show(head);
-    head = ins_at_beg(head,10);
-    printf("\n");
-    show(head);
+    int N;
+    scanf("%d",&N);
+    for (int i = 0; i<N ;i++{
+        if 
+    })
 }
