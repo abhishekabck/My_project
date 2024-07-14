@@ -2,7 +2,8 @@
     "files.associations": {
         "stdio.h": "c",
         "stdbool.h": "c",
-        "limits": "c"
+        "limits": "c",
+        "chrono": "c"
     },
     "C_Cpp.errorSquiggles": "disabled",
     "python.REPL.enableREPLSmartSend": false
