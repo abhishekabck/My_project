@@ -44,6 +44,20 @@ void append(struct node* ll,int data){
     ll->next = new_node;
 }
 
+void display(struct node* start){
+    if (start == NULL){
+        printf("Linked list is Empty");
+    }
+    else {
+        do {
+            printf("%d --> ",start->data);
+            start = start->next;
+        }
+        while (start != NULL);
+        printf("Null");
+    }
+}
+
 void show(struct node* ll){
     if (ll->next == null){
         printf("%d --> null",ll->data);
