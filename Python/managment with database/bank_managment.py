@@ -385,5 +385,3 @@ def login():
             login_menu()
         
         
-    
-main()
