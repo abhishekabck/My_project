@@ -1,6 +1,6 @@
-import Java.Algorithms_I.algs4.StdIn;
-import Java.Algorithms_I.algs4.StdOut;
-import Java.Algorithms_I.algs4.StdRandom;
+import Java.lib.algs4.StdIn;
+import Java.lib.algs4.StdOut;
+import Java.lib.algs4.StdRandom;
 
 public class RandomWord {
     public static void main(String[] args){
