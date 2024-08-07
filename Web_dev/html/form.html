@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang = "en">
+    <head>
+        <title>Form</title>
+    </head>
+    <body>
+        <form>
+            <div>
+                <input name = "name" type="text" placeholder = "Name">
+                <input name = "password" type="password" placeholder="Password">
+            </div>
+
+            <div>
+                Favorite Color?
+                <input name="color" type="radio" value="red"> Red
+                <input name="color" type="radio" value="green"> Green
+                <input name="color" type="radio" value="Blue"> Blue
+                <input name="color" type="radio" value="other"> Other
+            </div>
+
+            <div>
+                <input name="country" list="countries" placeholder="Country">
+                <datalist id="countries">
+                    <option value="Afghanistan">
+                    <option value="Albania">
+                    <option value="Algeria">
+                    <option value="India">
+                </datalist>
+            </div>
+        </form>
+    </body>
+</html>

@@ -1,25 +1,64 @@
 import WeightedQuickUF
-
 class percolation:
-    # for 1- based indexing
-    def __init__(s, n: int):
-        # Creating Grid of n-by-n + 2(virtual Nodes) as blocked
-        s.grid = [False for i in range(n*n+2)] # false means blocked and True means open
-        s.n = n
-        s.wuf = WeightedQuickUF.WeightedQuickUnionFind(n*n + 2)
-        
-    def validate(s, x: int) ->None:
-        if x < 1 or x > s.n:
-            raise ValueError.add_note("Out of Bound..")
+    def __init__(self, grid_size: int):
+        # Calling WeightedQuickUnionFind class to connect opened blocks
+        # Taking two extra blocks for virtual top and virtual top\
+        self.gs = grid_size
+        self.wuf = WeightedQuickUF.WeightedQuickUnionFind(self.gs*self.gs + 2)
+        self.status = [0 for i in range(self.gs*self.gs)]    # Taking all the blockes of matrix as blocked
+        self.vt = self.gs*self.gs + 1
+        self.vb = self.vt + 1
     
-    def index(s, row : int, col: int) -> int:
-        return (row-1)*s.n + col - 1
-        
-    def isOpen(s, row : int, col : int) -> bool:
-        s.validate(row)
-        s.validate(col)
-        return s.grid[s.index(row, col)] # returns true is opened
+    def validate(self, row: int, col: int) -> bool:
+        if row < 1 and row > self.gs or col < 1 and col > self.gs:
+            return False
+        return True
     
-    def open(s, row:int , col:int):
-        if not s.isOpen(row, col):
-            pass
+    def ind(self, row:int , col: int) -> int:
+        return (row - 1) * self.gs + (col - 1)
+            
+    def open(self, row: int, col: int) -> None:
+        if self.validate(row, col) == True:
+            raise ValueError.add_note("Incorrect Index.")
+        index = self.ind(row, col)
+        self.status[index] = 1
+        if row == 1 or row == self.gs:
+            if row == 1:
+                self.wuf.union(self.vt, index)
+            else:
+                self.wuf.union(index, self.vb)
+        else:
+            if self.status[index - self.gs] == 1: # checking Upward block
+                self.wuf.union(index - self.gs, index)
+            if self.status[index - 1] == 1: # checking for backward block
+                self.wuf.union(index - 1, index)
+            if self.status[index + 1] == 1: # checking for forward block
+                self.wuf.union(index, index + 1)
+            if self.status[index + self.gs] == 1:  # checking for downward block
+                self.wuf.union(index, index + self.gs)
+    
+    def isOpen(self, row: int, col:int) -> bool:
+        if not self.validate(row, col):
+            raise ValueError.add_note("Incorrect Index")
+        return self.status[self.ind(row, col)]
+    
+    def isFull(self, row: int, col: int):
+        if not self.validate(row, col):
+            raise ValueError.add_note("Incorrect Index")
+        index = self.ind(row, col)
+        if self.gs == 1:
+            return self.status[index]
+        
+        elif row != self.gs:
+            return self.wuf.connected(self.vt, index)
+        
+        else:
+            if self.status[index - self.gs] == 1:
+                return True
+            elif col > 1 and self.status[index - 1] == 1:
+                return self.isFull(row, col - 1)
+            
+    
+    def isPeroclates(self, row: int, col: int) -> bool:
+        pass
+    

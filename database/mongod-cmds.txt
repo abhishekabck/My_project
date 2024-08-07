@@ -1,0 +1,14 @@
+## to see curently working db
+>db
+example :-
+>use video
+switched to db video
+>db
+video
+
+// To access the collection(movies) in db(video) variable
+>db.movies
+
+##Basic Operations with the shell
+#create
+The insertOne fucntion adds a document to a collection. for example suppose we want to store a movie. First, we'll create a local variable called movie that is a java Script object representing our document

@@ -1,0 +1,14 @@
+body {
+    color:rgb(118, 118, 118);
+    box-sizing: border-box;
+    text-align: center;
+    display:relative;
+    margin:center;
+}
+
+#container {
+    background-color: aqua;
+    margin-left:30%;
+    margin-top:30%;
+    padding-left:0px;
+}

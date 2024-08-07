@@ -1,0 +1,118 @@
+body {
+    font-family:Arial, Helvetica, sans-serif;
+    margin:0;
+    padding:0;
+}
+header {
+    background-color: rgb(17, 54, 54);
+    color:white;
+    padding:15px 0;
+}
+
+.header-content {
+    max-width:1200px;
+    margin:0 auto;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+}
+header h1{
+    margin-left:20px;
+}
+
+nav ul {
+    list-style:none;
+    display: flex;
+}
+nav ul li {
+    margin-right:20px;
+}
+
+nav ul li a{
+    color:white;
+    text-decoration:none;
+    font-weight: bold;
+}
+
+#hero {
+    background-image:url("buss.jpeg");
+    background-size: cover;
+    background-position:center;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color:black;
+}
+.hero-content {
+    background-color: #c9bbbb80;
+    padding:20px;
+}
+
+#button {
+    display: inline-block;
+    margin-top:20px;
+    padding:0px 30px;
+    background-color: rgb(239, 101, 62);
+    color:white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+#services {
+    background-color:white;
+    padding:20px;
+    text-align: left;
+}
+
+#services h2 {
+    color:blue;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+#service ul{
+    list-style-type: circle;
+    margin-left: 20px;
+}
+#services li{
+    margin-left:20px;
+    margin-bottom:10px;
+}
+
+/*About*/
+#about {
+    background-color:rgb(211, 211, 211) ;
+    padding:20px;
+    text-align:left;
+}
+
+#about h2{
+    color:green;
+    margin-bottom: 15px;
+}
+
+#contact {
+    background-color: white;
+    padding:20px;
+    text-align: left;
+}
+
+#content h2 {
+    color:rgb(244, 99, 88);
+    margin-bottom: 15px;
+}
+
+#contact p {
+    margin-bottom:10px;
+}
+
+footer {
+    background-color: rgb(17, 54, 54);
+    color:white;
+    text-align:center;
+    padding:10px 0;
+}
+
+

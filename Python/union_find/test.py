@@ -5,18 +5,8 @@ class WeightedQuickUnionFind :
         self.count = n
     
     # returns Number of sets
-    def count(self):
-        return self.count
-    
-    def validate(self, p) -> None:
-        n = len(self.parent)
-        if p<0 or p>= n:
-            raise ValueError.add_note("Index " + str(p) + " is not between 0 and " + str((n - 1)))
-        
-        
-        
+
     def find(self, p) -> int:
-        self.validate(p)
         while (self.parent[p] != p):
             p = self.parent[p]
         return p
@@ -25,8 +15,6 @@ class WeightedQuickUnionFind :
         return self.find(p) == self.find(q)
     
     def union(self, p, q):
-        self.validate(p)
-        self.validate(q)
         rootp = self.find(p)
         rootq = self.find(q)
         if rootp != rootq :
@@ -38,3 +26,16 @@ class WeightedQuickUnionFind :
                 self.size[rootp] += self.size[rootp]
 
             self.count -= 1
+
+class Solution:
+    def findCircleNum(self, isConnected: list[list[int]]) -> int:
+        n = len(isConnected)
+        wuf = WeightedQuickUnionFind(n)
+        for i in range(n):
+            for j in range(i+1, n):
+                if isConnected[i][j] == 1:
+                    wuf.union(i,j)
+        
+        return wuf.count
+    
+print(Solution().findCircleNum([[1,0,0],[0,1,0],[0,0,1]]))
