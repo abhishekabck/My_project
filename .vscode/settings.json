@@ -50,5 +50,8 @@
         "malloc.h": "c"
     },
     "C_Cpp.errorSquiggles": "disabled",
-    "python.REPL.enableREPLSmartSend": false
+    "python.REPL.enableREPLSmartSend": false,
+    "cSpell.words": [
+        "fortuner"
+    ]
 }
