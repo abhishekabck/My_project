@@ -17,4 +17,3 @@ class Student:
 s1 = Student("Abhishek", 97)
 s2 = Student(64)
 print(s1.name, s1.marks, s1.clg_name)
-print(s2.name, s2.marks, s2.clg_name)

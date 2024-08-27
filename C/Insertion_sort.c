@@ -6,7 +6,7 @@ void swap(int *a, int *b){
 }
 
 int main(){
-    int a[] = {9,45,23,4,2,4,55,31 };
+    int a[] = {9,45,23,4,2,4,55,31};
     int n = sizeof(a)/sizeof(a[0]);
     int i , j;
     for (i =0; i<n; i++){

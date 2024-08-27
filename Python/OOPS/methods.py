@@ -10,6 +10,7 @@ class Student:
     def welcome(self):
         print("Welcome Student", self.name)
     
+    
     def get_marks(self):
         return self.marks
 

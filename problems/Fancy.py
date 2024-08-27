@@ -1,12 +1,13 @@
 class Fancy:
     def __init__(self) -> None:
-        self.__seq = []
+        self.__seq1 = []
+        self.__seq2 = []
         self.__inc = [0]
         self.__m = [1]
     
     @property
     def __length(self):
-        return len(self.__seq)
+        return len(self.__seq1) + len(self.__seq2)
     
     def append(self, val:int) -> None:
         self.__seq.append(val)
