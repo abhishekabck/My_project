@@ -14,6 +14,13 @@ class Database:
     def isconnected(self):
         return self.cnx.is_connected()
 
+class Prepare_Db:
+    def __init__(Self):
+        self.createdb()
+        self.prepbank()
+        self.prepgrocery()
+        self.prep
+
 class Bank(Database):
     @property
     def exc(self, query:str):
