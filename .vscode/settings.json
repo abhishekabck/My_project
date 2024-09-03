@@ -53,5 +53,10 @@
     "python.REPL.enableREPLSmartSend": false,
     "cSpell.words": [
         "fortuner"
+    ],
+    "cSpell.enableFiletypes": [
+        "bat",
+        "r",
+        "sql"
     ]
 }
