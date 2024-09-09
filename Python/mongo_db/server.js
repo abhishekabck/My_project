@@ -35,6 +35,6 @@ app.post( '/api/cars' , (req , res) => {
 
 
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost:27017/myDatabase' )
+mongoose.connect('mongodb://localhost:27017/myDatabase')
 .then( ()=> { console.log("Connection established between mongoDb and express")})
 .catch( (error)=>{ console.log("Received an error")})
