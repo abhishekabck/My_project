@@ -1,17 +1,20 @@
-class Solution:
-    def helper(self, ls, br, idx):
-        if len(br) == len(ls):
-            self.score = max(self.score, sum(br))
-            return
-        for i in ls[idx]:
-            if i not in br:
-                br.append(i)
-                self.helper(ls, br, idx+1)
-                br.pop()
+def per(message, bannedWords):
+        count = dict()
+        for i in message:
+            if count.get(i,-1) != -1:
+                count[i] += 1
+            else:
+                count[i] = 1
         
-    def maxScore(self, grid: list[list[int]]) -> int:
-        self.score = 0
-        self.helper(grid, [], 0)
-        return self.score
-        
-print(Solution().maxScore([[5],[7],[19],[5]]))
+        s1 = {i for i in message}
+        s2 = {i for i in bannedWords}
+        s3 = s1.intersection(s2)
+        total = 0
+        for i in s3:
+            if i in count:
+                total+=count[i]
+        if total<2:
+            return False
+        else:
+            return True
+print(per(["l","i","l","i","l"],["d","a","i","v","a"]))
