@@ -3,15 +3,15 @@
 using namespace std;
 
 
-int* max_min_array(vector<int>& arr){
+void max_min_array(vector<int>& arr, vector<int>& arr1){
     int max = INT_MIN;
     int min = INT_MAX;
     for (auto it: arr) {
         max = (max<it)?it:max;
         min = (min>it)?it:min;
     }
-    int arr[2] = {min, max};
-    return arr;
+    arr1.push_back(min);
+    arr1.push_back(max);
 }
 
 
@@ -19,7 +19,8 @@ void count_sort(vector<int>& array) {
     int n = array.size();
     
     // Evaluating the maximum and minimum of the array
-    int* arr = max_min_array(array);
+    vector<int> arr;
+    max_min_array(array,arr);
     int t_size = arr[1] - arr[0] + 1;  // Size of the temporary array
     // Assigning the array in heap
     int* freq = (int*)calloc(t_size, sizeof(int));
