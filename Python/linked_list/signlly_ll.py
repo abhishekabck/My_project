@@ -56,7 +56,7 @@ class LinkedList(object):
         self.length += 1
     
     ## inserting at random
-    def insertAtGivenPosition(self,pos,data):   
+    def insertAtGivenPosition(self,pos,data):
         """
         Args:
             pos (int): Position of new Node in linked list 
@@ -172,5 +172,10 @@ if __name__ == "__main__":
     head = Node()
     ll = LinkedList(head)
     ll.insertAtBeginning(56)
-    head = ll.head
-    print(head.getData())
+    ll.insertAtBeginning(567)
+    ll.deleteFromEnd()
+    current = ll.head
+    while current.next != None:
+        print(current.getData())
+        current = current.next
+    print(current.getData())
