@@ -1,0 +1,1 @@
+shutdown.exe -s -t 1 -c " your computer will shut down in 2 seconds
