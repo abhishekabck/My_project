@@ -32,7 +32,7 @@ void count_sort(vector<int>& array) {
 
     // assigning the values to original array
     for (int i = 0, j = 0; i < n; i++) {
-        while (freq[i]>0) array[i++] = freq[j]--;
+        while (freq[i]>0) array[i++] = j+arr[0],freq[j]--;
     }
 }
 

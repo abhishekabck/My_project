@@ -14,8 +14,24 @@ class Sorting:
                 array[k] = i+m
                 freq[i] -= 1
                 k += 1
-        
-        print(array)
+    
+    def partition(self, array, low, high):
+        if low<high:
+            i,j = high, high
+            pivot = array[low]
+            while low<i:
+                if array[i] >= pivot:
+                    array[i], array[j] = array[j], array[i]
+                    j -= 1
+                i -= 1
+            array[low], array[j] = array[j], array[low]
+            return j
+
+    def quick_sort(self, array, low, high):
+        if high > low:
+            point = self.partition(array, low, high)
+            self.quick_sort(array, low, point - 1)
+            self.quick_sort(array, point+1, high)
 
 arr = [4,5,5,4,3,54,6,5,64,32,4,5,4,23,32]
 s = Sorting()

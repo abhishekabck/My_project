@@ -1,3 +1,31 @@
-td{
-    border: 2px solid black;
+table {
+    border-collapse: collapse;
+    width:100%;
+}
+th, td {
+
+    padding:4px;
+    text-align: left;
+    border-bottom: 1px solid red;
+}
+
+th:hover {
+    color:beige;
+}
+tr:hover {background-color:  #dfd6ee;
+    color:darkmagenta;}
+
+#Hx {
+    li:hover {
+        border-radius: 20px;
+    text-align: center;
+    border-collapse:collapse;
+    color:aquamarine;
+    background-color: darkblue;}
+    
+}
+
+#myform {
+    border:1px black solid;
+    background-color: aquamarine;
 }
