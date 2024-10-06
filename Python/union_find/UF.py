@@ -37,22 +37,29 @@ class UF:
             self.rank[rootp] += 1
         self.count -= 1
 
-uf = UF(10)
-uf.union(4, 3)
-print(uf.count)
-uf.union(3, 8)
-uf.union(9, 4)
-uf.union(1, 5)
-uf.union(1, 6)
-print(uf.connected(6, 5))
-print(uf.connected(9, 3))
-print(uf.count)
-uf.union(5, 0)
-uf.union(7, 2)
-uf.union(6, 1)
-uf.union(2, 0)
-print(uf.connected(0, 7))
+invocations = [[1,2],[0,1],[3,2]]
+k = 0
+n = 4
 
+def main(invocations, k, n):
+    uf = UF(n)
+    for ai, bi in invocations:
+        uf.union(ai, bi)
+    
+    roots = dict()
+    for i in range(0, n):
+        rt = uf.find(i)
+        if roots.get(rt, -1) == -1:
+            roots[rt] = [i]
+        else:
+            roots[rt].append(i)
+    answer = []
+    for i in roots:
+        if k not in roots[i]:
+            answer.extend(roots[i])
+    
+    print(answer)
+        
 
-        
-        
+if __name__ == "__main__":
+    main(invocations, k, n)
