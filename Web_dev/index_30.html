@@ -50,9 +50,23 @@
         <input type="text" id = "Email" name = "Email" value = ""><br>
         <br>
         <label for = "pwd">Your Password:</label><br>
+        <label for = "files">Select files:</label>
+        <input type = "file" id = "files" name = "files" multiple><br><br>
         <input type = "password" id = "pwd" name ="pwd"><br>
         <input type="reset" value="reset">
         <input type = "submit" id ="sub" value = "submit">
+        <br>
+        <hr>
+        <h1>Select Your Company name</h1>
+        <br>
+        <input list = "companies" name = "company">
+        <datalist id = "companies">
+            <option value = "google">Google</option>
+            <option value = "Apple">Apple</option>
+            <option value = "amazon">Amazon</option>
+            <option value = "microsoft">microsoft</option>
+        </datalist>
+        <input type = "submit" value = "submit">
     </form>
 </body>
 </html>
