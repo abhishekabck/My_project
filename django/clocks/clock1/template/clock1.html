@@ -1,0 +1,9 @@
+{% extends "master.html" %}
+{% block title %} My First Non Static clock {% endblock %}
+{% block html %}
+<div class = "clk1">
+    {% for time in timer %}
+        <h1> {{ time }} </h1>
+    {% endfor %}
+</div>
+{% endblock %}
