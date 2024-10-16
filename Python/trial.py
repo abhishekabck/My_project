@@ -1,20 +1,33 @@
-def per(message, bannedWords):
-        count = dict()
-        for i in message:
-            if count.get(i,-1) != -1:
-                count[i] += 1
-            else:
-                count[i] = 1
-        
-        s1 = {i for i in message}
-        s2 = {i for i in bannedWords}
-        s3 = s1.intersection(s2)
-        total = 0
-        for i in s3:
-            if i in count:
-                total+=count[i]
-        if total<2:
-            return False
+def isEqual(s, t) -> int:
+    n, m = len(s), len(t)
+    if n < m :
+        return -1
+    if n == m and s != t:
+        return -1
+    elif s == t:
+        return 0
+    k = 0
+    count = 0
+    for i in t:
+        x = s.find(i, k)
+        if x == -1:
+            return -1
+        elif x != k:
+            count +=1
+            k = x+1
         else:
-            return True
-print(per(["l","i","l","i","l"],["d","a","i","v","a"]))
+            k += 1
+                
+    return count
+
+
+def main() -> None:
+    test = int(input())
+    for i in range(test):
+        n, m = list(map(int, input().split()))
+        s = input()
+        t = input()
+        print(isEqual(s, t))
+
+if __name__ == "__main__":
+    main()
