@@ -37,3 +37,7 @@ void traverse(struct node* head){
     }
     printf("%d",temp->data);
 }
+
+struct node* insertAtBeg(struct node* head, int data){
+    
+}

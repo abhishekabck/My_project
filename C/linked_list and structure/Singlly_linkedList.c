@@ -210,6 +210,23 @@ void freeList(struct node* head) {
 
 
 // Reversing Linked list
+struct node* reverseLinkedList(struct node* head){
+    struct node* prevNode, *curNode;
+    if (head!=NULL){
+        prevNode = head;
+        curNode = head->next;
+        head = head->next;
+        prevNode->next = NULL;
+        while (head != NULL){
+            head = head->next;
+            curNode->next = prevNode;
+            prevNode = curNode;
+            curNode = head;
+        }
+        head = prevNode;
+        return head;
+    }
+}
 
 int main() {
     struct node* head = NULL;
@@ -223,7 +240,7 @@ int main() {
 
     printList(head);
     printf("Length: %d\n", length(head));
-
+    
     freeList(head);
     return 0;
 }
