@@ -115,6 +115,8 @@ void selection_sort(int* arr, int size){
             swap(arr + i, arr + index);
         }
     }
+}
+
 
 
 
