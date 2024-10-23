@@ -237,7 +237,8 @@ int main() {
     head = insertAtBeg(head, 454);
     head = insert(head, 45, 2);
     head = insertAfter(head, 99, 24);  // Fixed integer value
-
+    printList(head);
+    head = reverseLinkedList(head);
     printList(head);
     printf("Length: %d\n", length(head));
     
