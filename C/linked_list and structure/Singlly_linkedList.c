@@ -208,6 +208,9 @@ void freeList(struct node* head) {
     }
 }
 
+
+// Reversing Linked list
+
 int main() {
     struct node* head = NULL;
     head = insertAtBeg(head, 65);
