@@ -1,73 +1,92 @@
 {
-    "configurations": [
+  "configurations": [
+    {
+      "type": "java",
+      "name": "HelloWorld",
+      "request": "launch",
+      "mainClass": "Java.Algorithms_I.HelloWorld",
+      "projectName": "Projects_cbb39858"
+    },
+    {
+      "type": "java",
+      "name": "HelloGoodBye",
+      "request": "launch",
+      "mainClass": "Java.Algorithms_I.HelloGoodBye",
+      "projectName": "Projects_cbb39858"
+    },
+    {
+      "type": "java",
+      "name": "HelloGoodBye",
+      "request": "launch",
+      "mainClass": "HelloGoodBye",
+      "projectName": "Projects_cbb39858"
+    },
+    {
+      "type": "java",
+      "name": "Printing_name",
+      "request": "launch",
+      "mainClass": "Java.Printing_name",
+      "projectName": "Projects_cbb39858"
+    },
+    {
+      "type": "java",
+      "name": "HelloWorld",
+      "request": "launch",
+      "mainClass": "HelloWorld",
+      "projectName": "Projects_cbb39858"
+    },
+    {
+      "type": "java",
+      "name": "string_ops",
+      "request": "launch",
+      "mainClass": "Java.string_ops",
+      "projectName": "Projects_cbb39858"
+    },
+    {
+      "name": "C/C++: g++.exe build and debug active file",
+      "type": "cppdbg",
+      "request": "launch",
+      "program": "${fileDirname}\\${fileBasenameNoExtension}.exe",
+      "args": [],
+      "stopAtEntry": false,
+      "cwd": "${fileDirname}",
+      "environment": [],
+      "externalConsole": false,
+      "MIMode": "gdb",
+      "miDebuggerPath": "C:\\msys64\\ucrt64\\bin\\gdb.exe",
+      "setupCommands": [
         {
-            "type": "java",
-            "name": "HelloWorld",
-            "request": "launch",
-            "mainClass": "Java.Algorithms_I.HelloWorld",
-            "projectName": "Projects_cbb39858"
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
         },
         {
-            "type": "java",
-            "name": "HelloGoodBye",
-            "request": "launch",
-            "mainClass": "Java.Algorithms_I.HelloGoodBye",
-            "projectName": "Projects_cbb39858"
-        },
-        {
-            "type": "java",
-            "name": "HelloGoodBye",
-            "request": "launch",
-            "mainClass": "HelloGoodBye",
-            "projectName": "Projects_cbb39858"
-        },
-        {
-            "type": "java",
-            "name": "Printing_name",
-            "request": "launch",
-            "mainClass": "Java.Printing_name",
-            "projectName": "Projects_cbb39858"
-        },
-        {
-            "type": "java",
-            "name": "HelloWorld",
-            "request": "launch",
-            "mainClass": "HelloWorld",
-            "projectName": "Projects_cbb39858"
-        },
-        {
-            "type": "java",
-            "name": "string_ops",
-            "request": "launch",
-            "mainClass": "Java.string_ops",
-            "projectName": "Projects_cbb39858"
-        },
-        {
-            "name": "C/C++: g++.exe build and debug active file",
-            "type": "cppdbg",
-            "request": "launch",
-            "program": "${fileDirname}\\${fileBasenameNoExtension}.exe",
-            "args": [],
-            "stopAtEntry": false,
-            "cwd": "${fileDirname}",
-            "environment": [],
-            "externalConsole": false,
-            "MIMode": "gdb",
-            "miDebuggerPath": "C:\\msys64\\ucrt64\\bin\\gdb.exe",
-            "setupCommands": [
-                {
-                    "description": "Enable pretty-printing for gdb",
-                    "text": "-enable-pretty-printing",
-                    "ignoreFailures": true
-                },
-                {
-                    "description": "Set Disassembly Flavor to Intel",
-                    "text": "-gdb-set disassembly-flavor intel",
-                    "ignoreFailures": true
-                }
-            ],
-            "preLaunchTask": "C/C++: g++.exe build active file"
+          "description": "Set Disassembly Flavor to Intel",
+          "text": "-gdb-set disassembly-flavor intel",
+          "ignoreFailures": true
         }
-    ],
-    "version": "2.0.0"
+      ],
+      "preLaunchTask": "C/C++: g++.exe build active file"
+    },
+    {
+      "name": "C/C++ Runner: Debug Session",
+      "type": "cppdbg",
+      "request": "launch",
+      "args": [],
+      "stopAtEntry": false,
+      "externalConsole": false,
+      "cwd": "/workspaces/My_project/C/linked_list and structure",
+      "program": "/workspaces/My_project/C/linked_list and structure/build/Debug/outDebug",
+      "MIMode": "gdb",
+      "miDebuggerPath": "gdb",
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        }
+      ]
+    }
+  ],
+  "version": "2.0.0"
 }
