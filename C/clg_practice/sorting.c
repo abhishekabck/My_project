@@ -1,5 +1,6 @@
 # include <stdio.h>
 # include <stdlib.h>
+# include <math.h>
 # define true 1
 # define false 0
 
@@ -107,6 +108,16 @@ int min(int* arr, int start, int end){
     return min_index;  // Return the index of the minimum element
 }
 
+int max(int *arr, int size){
+    if (size == 0){
+        return NULL;
+    }
+    int max = arr[0];
+    for (int i = 1; i<size; i++){
+        max = (max > arr[i])? max: arr[i];
+    }
+    return max;
+}
 // Selection sort
 void selection_sort(int* arr, int size){
     for (int i = 0; i < size; i++){
@@ -117,16 +128,64 @@ void selection_sort(int* arr, int size){
     }
 }
 
+// Partition function
+int partition(int* array, int low, int high) {
+    int i = high, j = high;
+    int pivot = array[low];
+    while (low < i) {
+        if (array[i] >= pivot) {
+            swap(&array[i], &array[j]);
+            j--;
+        }
+        i--;
+    }
+    swap(array+low, array+j);
+    return j;
+}
+
+// Quick Sort function
+void quick_sort(int* arr, int left, int right) {
+    if (left < right) {
+        int mid = partition(arr, left, right);
+        quick_sort(arr, left, mid - 1);
+        quick_sort(arr, mid + 1, right);
+    }
+}
+
+// Counting for radix_sort
+void count(int* arr, int size, int digit){
+    int* freq = (int*)malloc(sizeof(int)*10);
+    for (int i = 0; i<size; i++){
+        int mod = arr[i]%pow(10,(digit+1));
+        freq[mod/pow(10, digit)]++;
+    }
+    // prefix Sum
+    for (int i = 1; i<10; i++){
+        freq[i] = freq[i] + freq[i-1];
+    }
+    
+}
 
 
-
+// Radix Sort
+void radix_sort(int* arr, int size){
+    // Finding maximum
+    int max = max(arr, size);
+    // Calculating number of digits
+    int n_digits = 0;
+    while (max != 0){
+        n_digits++;
+        max /= 10;
+    }
+    // looping through n_digits time to find counting and updating regularly
+}
 
 int main(){
     int arr[] = {3,5,3,1,4,23,53,23,53,4};
     int size = sizeof(arr)/sizeof(arr[0]);
     int* arr2 = copy(arr, size);
     insertion_sort(arr, size);
-    merge_sort(arr2, 0, size-1);
+    quick_sort(arr2, 0, size-1);
     print(arr2, size);
     print(arr, size);
     return 0;
