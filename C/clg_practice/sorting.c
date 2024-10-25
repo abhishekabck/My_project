@@ -110,7 +110,7 @@ int min(int* arr, int start, int end){
 
 int max(int *arr, int size){
     if (size == 0){
-        return NULL;
+        return 0;
     }
     int max = arr[0];
     for (int i = 1; i<size; i++){
@@ -152,41 +152,90 @@ void quick_sort(int* arr, int left, int right) {
     }
 }
 
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+
 // Counting for radix_sort
-void count(int* arr, int size, int digit){
-    int* freq = (int*)malloc(sizeof(int)*10);
-    for (int i = 0; i<size; i++){
-        int mod = arr[i]%pow(10,(digit+1));
-        freq[mod/pow(10, digit)]++;
+void count_sort(int* arr, int size, int digit) {
+    int* freq = (int*)malloc(sizeof(int) * 10); // Fix the multiplication
+
+    // Initialize frequency array
+    for (int i = 0; i < 10; i++) {
+        freq[i] = 0;
     }
-    // prefix Sum
-    for (int i = 1; i<10; i++){
-        freq[i] = freq[i] + freq[i-1];
+
+    // Calculate frequencies
+    for (int i = 0; i < size; i++) {
+        int mod = arr[i] % (int)pow(10, (digit + 1));
+        freq[mod / (int)pow(10, digit)]++;
     }
-    
+
+    // Prefix Sum
+    for (int i = 1; i < 10; i++) {
+        freq[i] += freq[i - 1];
+    }
+
+    // Creating a temporary array
+    int* temp = (int*)calloc(size, sizeof(arr[0]));
+
+    // Build the temporary array
+    for (int i = size - 1; i >= 0; i--) {
+        int elm = arr[i] % (int)pow(10, digit + 1) / (int)pow(10, digit);
+        temp[--freq[elm]] = arr[i];
+    }
+
+    // Copy sorted data to original array
+    for (int i = 0; i < size; i++) {
+        arr[i] = temp[i];
+    }
+
+    free(temp);
+    free(freq);
 }
 
-
 // Radix Sort
-void radix_sort(int* arr, int size){
+void radix_sort(int* arr, int size) {
     // Finding maximum
-    int max = max(arr, size);
+    int max = arr[0];
+    for (int i = 1; i < size; i++) {
+        if (arr[i] > max) {
+            max = arr[i];
+        }
+    }
+
     // Calculating number of digits
     int n_digits = 0;
-    while (max != 0){
+    while (max != 0) {
         n_digits++;
         max /= 10;
     }
-    // looping through n_digits time to find counting and updating regularly
+
+    // Looping through digits
+    for (int i = 0; i < n_digits; i++) {
+        count_sort(arr, size, i);
+    }
 }
 
-int main(){
-    int arr[] = {3,5,3,1,4,23,53,23,53,4};
-    int size = sizeof(arr)/sizeof(arr[0]);
-    int* arr2 = copy(arr, size);
-    insertion_sort(arr, size);
-    quick_sort(arr2, 0, size-1);
-    print(arr2, size);
-    print(arr, size);
+int main() {
+    int arr[] = {170, 45, 75, 90, 802, 24, 2, 66};
+    int size = sizeof(arr) / sizeof(arr[0]);
+
+    radix_sort(arr, size);
+
+    for (int i = 0; i < size; i++) {
+        printf("%d ", arr[i]);
+    }
     return 0;
 }
+
+// int main(){
+//     int arr[] = {3,5,3,1,4,23,53,23,53,4};
+//     int size = sizeof(arr)/sizeof(arr[0]);
+//     int* arr2 = copy(arr, size);
+//     insertion_sort(arr, size);
+//     quick_sort(arr2, 0, size-1);
+//     print(arr2, size);
+//     print(arr, size);
+//     return 0;
+// }
