@@ -229,6 +229,12 @@ int main() {
     return 0;
 }
 
+
+// Searching Begins
+
+
+
+
 // int main(){
 //     int arr[] = {3,5,3,1,4,23,53,23,53,4};
 //     int size = sizeof(arr)/sizeof(arr[0]);

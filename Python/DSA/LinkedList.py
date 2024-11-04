@@ -17,6 +17,8 @@ class Node:
     def hasNext(self):
         return self.next!=None
 # class for defining a liked list
+
+
 class LinkedList(object):
     # initializing a list
     def __init__(self, node = None):
@@ -49,6 +51,8 @@ class LinkedList(object):
     def insertAtEnd(self,data):
         newNode = Node()
         newNode.data = data
+        if self.head == None:
+            self.head = newNode
         current = self.head
         while current.next != None:
             current = current.next
@@ -166,4 +170,19 @@ class LinkedList(object):
     # deleting linked list
     def clear(self):
         self.head = None
+            
+    # Method to get value at any specified Position
+    @property
+    def last(self):
+        current = self.head
+        if current == None:
+            return
+        else:
+            while current.next != None:
+                current = current.next
+            
+            return current
         
+ll = LinkedList()
+ll.insertAtBeginning(45)
+print(ll.head.getData())

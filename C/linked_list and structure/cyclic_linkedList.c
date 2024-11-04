@@ -42,6 +42,10 @@ struct CircularLList{
 
     // Traversing
     void (*traverse)(struct CircularLList*);
+    // Tools
+    int (*max)(struct CircularLList*);
+    int (*min)(struct CircularLList*);
+    void (*sort_using_array)(struct CircularLList*);
 
     // reversing
     void (*reverse)(struct CircularLList*);
@@ -323,6 +327,40 @@ void reverse(struct CircularLList* list) {
     tail->next = list->head;
 }
 
+// Function to return maximum element of any linked list
+struct node* max(struct CircularLList* list){
+    if (list->length == 0) __raise__(" :LinkedList is Empty");
+    // Linked list contains some element
+    struct node* temp = list->head->next;
+    int max_element = list->head->data;
+    while (temp != list->head){
+        max_element = (max_element>temp->data)?max_element:temp->data;
+    }
+    return max_element;
+}
+
+// Function to return maximum element of any linked list
+struct node* min(struct CircularLList* list){
+    if (list->length == 0) __raise__(" :LinkedList is Empty");
+    // Linked list contains some element
+    struct node* temp = list->head->next;
+    int min_element = list->head->data;
+    while (temp != list->head){
+        min_element = (min_element<temp->data)?min_element:temp->data;
+    }
+    return min_element;
+}
+
+// Sorting using array
+void sort_using_cll(struct CircularLList* list){
+    if (list->length == 0 || list->length == 1) return;
+    struct node* temp = list->head, *node_to_delete;
+    // using insertion sort techniques
+    while (temp->next != list->tail) {
+        int key = temp->data;
+        struct node* temp1 = list->head;
+    }
+}
 
 
 // Defining circular linked list structure
@@ -340,6 +378,9 @@ struct CircularLList* create_CLL() {
     list->remove_some = remove_some;
     list->delete = delete;
     list->reverse = reverse;
+    list->max = max;
+    list->min = min;
+    list->sort_using_array = sort_using_array;
     return list;
 }
 
