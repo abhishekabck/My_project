@@ -48,7 +48,8 @@
     "variant": "c",
     "limits.h": "c",
     "malloc.h": "c",
-    "string.h": "c"
+    "string.h": "c",
+    "QUES1.C": "cpp"
   },
   "C_Cpp.errorSquiggles": "disabled",
   "python.REPL.enableREPLSmartSend": false,
