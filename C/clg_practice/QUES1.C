@@ -83,15 +83,18 @@ void bubbleSort(struct node* head) {
     while (swapped);
 }
 
-struct node* traverse_circular(struct node* head){
-    int count = 0;
+
+void traverse_circular(struct node* head) {
+    if (head == NULL) return; // Handle case when list is empty
     struct node* temp = head;
-    while (temp != head) {
+    int count = 0;
+    do {
         printf("%d --> ", temp->data);
         temp = temp->next;
-    }
-    printf("head");
-    printf("Total Number of Nodes are %d", count);
+        count++;
+    } while (temp != head);
+    printf("head\n");
+    printf("Total Number of Nodes are %d\n", count);
 }
 
 int main() {
@@ -106,9 +109,9 @@ int main() {
     // List 2
     struct node* head1 = NULL;
     head1 = NewNode(5);
-    head1->next = NewNode(7-3);
-    head1->next->next = NewNode(5+3);
-    head1->next->next->next = NewNode(2*3);
+    head1->next = NewNode(4);
+    head1->next->next = NewNode(8);
+    head1->next->next->next = NewNode(6);
     printf("List2 goes as:\n");
     traverse(head1);
 
@@ -117,5 +120,16 @@ int main() {
     traverse(both);
     bubbleSort(both);
     traverse(both);
+
+    // creating circular linked list
+    struct node* cll = NewNode(53);
+    cll->next = NewNode(34);
+    cll->next->next = NewNode(23);
+    cll->next->next->next = NewNode(235);
+    cll->next->next->next->next = cll; // Close the circular list
+
+    printf("Circular linked list goes as:\n");
+    traverse_circular(cll);
+
     return 0;
 }
