@@ -22,10 +22,14 @@ void Bubble_sort(int* arr, int size){
     }
 }
 
-void SelectionSort(int* arr, int size) {
-    for (int i = 0; i < size; i--){
-        int min = arr[];
-        for (int j = 1)
+void selection_sort(int* a, int n) {
+    int i, j, min;
+    for (i = 0; i < n - 1; i++) {
+        min = i;
+        for (j = i + 1; j < n; j++) {
+            if (a[j] < a[min]) min = j;
+        }
+        swap(&a[i], &a[min]);
     }
 }
 

@@ -23,23 +23,66 @@ struct dubll{
     struct dubll* next;
 };
 
-struct dubll new(int val){
+struct dubll* new(int val){
     struct dubll* new_node = (struct dubll*)malloc(sizeof(struct dubll));
+    if (new_node == NULL){
+        return NULL;
+    }
     new_node->previous = new_node->next = NULL;
     new_node->val = val;
     return new_node;
 }
 
-void in_beg(struct dubll* head, int val){
+struct dubll* insertAtBeg(struct dubll* head, int val){
+    if (head == NULL){
+        head = new(val);
+        return head;
+    }
     struct dubll* temp = head;
     while (temp->previous != NULL){
-        temp->pervious = temp;
+        temp = temp->previous;
     }
-    new(val)->next = temp->previous;
-    return head;
+    struct dubll* nn = new(val);
+    temp->previous = nn;
+    nn->next = temp;
+    return nn;
 }
 
-int main(){
-    struct dubll* head = new();
-    in_beg
+struct dubll* insertAtEnd(struct dubll* head, int val){
+    if (head == NULL){
+        return new(val);
+    }
+    else {
+        struct dubll* temp = head;
+        while (temp->next != NULL){
+            temp = temp->next;
+        }
+        struct dubll* nn = new(val);
+        temp->next = nn;
+        nn->previous = temp;
+        return head;
+    }
 }
+
+void traverse_inOrder(struct dubll* head){
+    struct dubll* temp = head;
+    while (temp->previous != NULL){
+        temp = temp->previous;
+    }
+    while(temp != NULL){
+        printf("%d -> ", temp->val);
+    }
+    printf("NULL");
+}
+
+void traverse_reverse(struct dubll* head){
+    struct dubll* temp = head;
+    while (temp->next != NULL){
+        temp = temp->next;
+    }
+    while (temp != NULL){
+        printf("%d <- ", temp->val);
+    }
+    printf(NULL);
+}
+

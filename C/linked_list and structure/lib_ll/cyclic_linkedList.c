@@ -58,7 +58,7 @@ struct CircularLList* create_CLL() {
         printf("Memory allocation failed\n");
         exit(1);
     }
-    list->head = NULL;
+    list->head = NULL;w
     list->tail = NULL;
     list->append = append;
     list->insertAtBeg = insertAtBeg;
