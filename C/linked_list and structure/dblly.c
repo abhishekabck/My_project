@@ -86,3 +86,17 @@ void traverse_reverse(struct dubll* head){
     printf(NULL);
 }
 
+
+int main(){
+    struct dubll* head = NULL;
+    head = insertAtBeg(head, 5);
+    insertAtBeg(head, 4);
+    insertAtBeg(head, 3);
+    insertAtEnd(head, 6);
+    insertAtEnd(head, 7);
+    printf("In Order Traversal: ");
+    traverse_inOrder(head);
+    printf("\nReverse Traversal: ");
+    traverse_reverse(head);
+    return 0;
+}

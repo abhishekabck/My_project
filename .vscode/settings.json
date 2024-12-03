@@ -49,7 +49,8 @@
     "limits.h": "c",
     "malloc.h": "c",
     "string.h": "c",
-    "QUES1.C": "cpp"
+    "QUES1.C": "cpp",
+    "iostream": "cpp"
   },
   "C_Cpp.errorSquiggles": "disabled",
   "python.REPL.enableREPLSmartSend": false,
