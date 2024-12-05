@@ -50,7 +50,9 @@
     "malloc.h": "c",
     "string.h": "c",
     "QUES1.C": "cpp",
-    "iostream": "cpp"
+    "iostream": "cpp",
+    "stdlib.h": "c",
+    "cyclic_linkedlist.h": "c"
   },
   "C_Cpp.errorSquiggles": "disabled",
   "python.REPL.enableREPLSmartSend": false,
