@@ -165,5 +165,52 @@ class LinkedList(object):
     
     # deleting linked list
     def clear(self):
+        temp = self.head
+        while temp!=None:
+            tt = temp
+            temp = temp.next
+            del tt
         self.head = None
-        
+    
+    def reversell(self,head):
+        if head == None or head.next == None:
+            return head
+        else:
+            pr_nodes = self.reversell(head.next.next)
+            tail = head
+            head = head.next
+            head.next = tail
+            tail.next = None
+            if pr_nodes == None:
+                return (head,tail)
+            else:
+                pr_nodes[1].next = head
+                return pr_nodes[0],tail
+
+def reverse_list(head):
+    prev = None
+    current = head
+
+    while current:
+        next_node = current.next  # Store the next node
+        current.next = prev       # Reverse the current node's pointer
+        prev = current            # Move `prev` one step forward
+        current = next_node       # Move `current` one step forward
+
+    return prev  # `prev` is the new head of the reversed list
+
+def traverse(head):
+    temp = head
+    while temp != None:
+        print(temp.data, end="->")
+        temp = temp.next
+    print(temp)
+
+ll = LinkedList()
+ll.insertAtBeginning(45)
+ll.insertAtBeginning(53)
+ll.insertAtEnd(235)
+ll.insertAtEnd(243)
+traverse(ll.head)
+traverse(reverse_list(ll.head))
+
