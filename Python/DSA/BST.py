@@ -39,6 +39,10 @@ class BST(object):
         self.root = None
         return None
 
+    def TopView(self, root: object) -> None:
+        queue = [root]
+        
+
     def insert(self, data: any) -> None:
         newNode = Node()
         newNode.setData(data)

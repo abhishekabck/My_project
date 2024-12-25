@@ -43,6 +43,8 @@ void PostOrderTraversal(struct Node* root){
         printf("%d ", root->val);
     }
 }
+
+
 int main(){
     struct Node* root = newnode(1);
     root->leftchild = newnode(3);

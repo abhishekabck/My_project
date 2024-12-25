@@ -1,9 +1,9 @@
 class Solution:
-    def myPow(self, x: float, n: int) -> float:
-        if (n == 0):
-            return 1
-        elif n < 0:
-            return x/self.myPow(x, n+1)
-        else :
-            return x*self.myPow(x, n-1)
-print(Solution().myPow(2.00000, -2))
+    def minimumOperations(self, nums: List[int]) -> int:
+        freq = Counter(nums)
+        while len(set(nums)) == len(nums):
+            if len(nums) < 3:
+                return []
+            nums = nums[2:]
+        return nums
+
