@@ -1,22 +1,9 @@
-7
-3 5
-aba
-ababa
-4 10
-czzz
-czzzzzczzz
-5 14
-dream
-dredreamamamam
-5 18
-tcccc
-tcctccccctccctcccc
-7 11
-abababc
-abababababc
-7 26
-aaaaaaa
-aaaaaaaaaaaaaaaaaaaaaaaaaa
-19 29
-bbbbbbbbbbbbbbbbbbb
-bbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+8
+0 2
+0 8
+1 3
+6 22
+128 137
+69 98
+115 127
+0 1073741823
