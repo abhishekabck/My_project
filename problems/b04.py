@@ -1,27 +1,11 @@
-from collections import Counter
+class Solution:
+    def kthCharacter(self, k: int, operations: list[int]) -> str:
+        result = "a"
+        count = 0
+        for i in range(len(operations)):
+            if operations[i] == k%2 == 1:
+                count += 1
+            k //= 2
+        return chr(97+count%26)
 
-def solve(t = int(input())):
-    for i in range(t):
-        n, k = map(int, input().split())
-        freq = Counter(list(map(int, input().split())))
-        answer = len(freq)
-        # if k == 0
-        if k == 0:
-            print(answer)
-            continue
-        
-        if k >= (n -1):
-            print(1)
-            continue
-        
-        # else k > 0 we can remove the number of values here
-        pairs = sorted([(i,freq[i],) for i in freq], key=lambda x: x[1])
-    
-        for pair in pairs:
-            if pair[1] <= k:
-                answer -= 1
-                k -= pair[1]
-            if pair[1] > k:
-                break
-        print(answer)
-solve()
+print(Solution().kthCharacter(10,[0,1,0,1]))
