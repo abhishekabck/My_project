@@ -22,15 +22,6 @@ class Node(object):
     def getData(self) -> any:
         return self.data
     
-    def remove_left(self) -> None:
-        if self.left != None:
-            del self.left
-        self.left = None
-    
-    def remove_right(self) -> None:
-        if self.right != None:
-            del self.right
-        self.right = None
 
 # Defining the Structure the Methods of BST
 class BST(object):
