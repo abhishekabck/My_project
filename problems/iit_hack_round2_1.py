@@ -1,4 +1,6 @@
 import pandas as pd
+import binascii
+import sys
 
 class SQLInjectionAnalyzer:
     def __init__(self, file_path):
@@ -19,7 +21,17 @@ class SQLInjectionAnalyzer:
 
     @staticmethod
     def contains_formatting_symbol(info):
-        return ":" in info
+        # Check for colon directly
+        if ":" in info:
+            return True
+        # Check for colon in hex format
+        try:
+            decoded_info = binascii.unhexlify(info).decode('utf-8')
+            if ":" in decoded_info:
+                return True
+        except (binascii.Error, UnicodeDecodeError):
+            pass
+        return False
 
     def analyze_traffic(self):
         first_time = float('inf')
@@ -52,9 +64,10 @@ class SQLInjectionAnalyzer:
         print(f"3A: {self.first_payload};")
         print(f"4A: {self.last_payload};")
         print(f"5A: {self.formatting_symbol_count};")
+        sys.stdout.flush()
 
 def main():
-    file_path = "problems/file1.csv"
+    file_path = input()
     analyzer = SQLInjectionAnalyzer(file_path)
     analyzer.analyze_traffic()
     analyzer.print_results()
