@@ -1,22 +1,39 @@
-import pandas as pd
+from typing import List, Optional
 
-count = 0
-sql_symbols = {"'":True, "\"":True, ";":True, "--":True, "/*":True, "*/":True, "xp_":True}
+class Solution:
+    def countMentions(self, numberOfUsers: int, events: List[List[str]]) -> List[int]:
+        # Custom sorting function
+        def custom_sort(event):
+            timestamp = int(event[1])
+            event_type = 0 if event[0] == "OFFLINE" else 1
+            return (timestamp, event_type)
 
-def x(y):
-    global count
-    for sq in sql_symbols:
-        if sq and sq in y:
-            count += 1
-            sql_symbols[sq] = False
-            return True
-    return False
+        # Sort events based on the custom sort function
+        events.sort(key=custom_sort)
 
-def x1(y):
-    return y == "10.0.2.5"
-# Load the CSV file
-file_path = "problems/file1.csv"
-data = pd.read_csv(file_path)
-df = data[data["Source"].apply(x1) ]
-print(df.head())
-print(count)
+        # All users are initially online
+        status = {i: 1 for i in range(numberOfUsers)}
+        mentions = [0] * numberOfUsers
+        
+        for event in events:
+            timestamp = int(event[1])
+            if event[0] == "MESSAGE":
+                if event[2] == "ALL":
+                    for i in range(numberOfUsers):
+                        mentions[i] += 1
+                elif event[2] == "HERE":
+                    for user_id in status:
+                        if status[user_id] != 1 and status[user_id] <= timestamp:
+                            status[user_id] = 1
+                        if status[user_id] == 1:
+                            mentions[user_id] += 1
+                else:
+                    for user_id in map(lambda x: int(x.lstrip("id")), event[2].split()):
+                        mentions[user_id] += 1
+            elif event[0] == "OFFLINE":
+                status[int(event[2])] = timestamp + 60
+        return mentions
+
+
+Solution().countMentions(3, [["MESSAGE","2","HERE"],["OFFLINE","2","1"],["OFFLINE","1","0"],["MESSAGE","61","HERE"]])
+    

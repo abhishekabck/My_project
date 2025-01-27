@@ -1,17 +1,28 @@
 from typing import List
+
 class Solution:
-    def is_safe_node(self, graph: List[List[int]], source: int, Terminal_nodes: set[int], visited: List[bool]) -> bool:
-        if len(set(graph[source]).union(Terminal_nodes)) == len(graph[source]):
-            return True
-        else:
-            result = True
-            for i in graph[i]:
-                if visited[i] == False:
-                    visited[i] = True
-                    result = result | self.is_safe_node(graph, i, Terminal_nodes)
-                    visited[i] = False
-            return result
-        
-    
     def eventualSafeNodes(self, graph: List[List[int]]) -> List[int]:
-        pass
+        n = len(graph)
+        color = [0] * n
+        
+        def dfs(node):
+            if color[node] > 0:
+                return color[node] == 2
+            color[node] = 1
+            for neighbor in graph[node]:
+                if color[neighbor] == 2:
+                    continue
+                if color[neighbor] == 1 or not dfs(neighbor):
+                    return False
+            color[node] = 2
+            return True
+        
+        result = []
+        for i in range(n):
+            if dfs(i):
+                result.append(i)
+                
+        return result
+    
+safe_nodes = Solution().eventualSafeNodes(graph=[[1,2],[2,3],[5],[0],[5],[],[]])
+print(safe_nodes)
