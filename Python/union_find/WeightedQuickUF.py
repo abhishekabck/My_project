@@ -2,16 +2,16 @@ class WeightedQuickUnionFind :
     def __init__(self, n):
         self.parent = list(range(n))
         self.size = [1 for i in range(n)]
-        self.count = n
+        self.set_count = n
     
     # returns Number of sets
     def count(self):
-        return self.count
+        return self.set_count
     
     def validate(self, p) -> None:
         n = len(self.parent)
         if p<0 or p>= n:
-            raise ValueError.add_note("Index " + str(p) + " is not between 0 and " + str((n - 1)))
+            raise ValueError("Index " + str(p) + " is not between 0 and " + str((n - 1)))
         
         
         
@@ -35,6 +35,6 @@ class WeightedQuickUnionFind :
                 self.size[rootq] += self.size[rootp]
             else :
                 self.parent[rootq] = rootp
-                self.size[rootp] += self.size[rootp]
+                self.size[rootp] += self.size[rootq]
 
-            self.count -= 1
+            self.set_count -= 1
