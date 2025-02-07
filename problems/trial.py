@@ -1,14 +1,25 @@
-import math
-def kthFactor(n: int, k: int) -> int:
-        s1 = list(filter(lambda x: n%x == 0, range(1, math.floor(math.sqrt(n)) + 1)))
-        s2 = []
-        if s1[-1]*s1[-1] != n:
-            s2.append(n//s1[-1])
-        s2 += [n//s1[-x] for x in range(2, len(s1)+1)]
-        if k <= len(s1):
-            return s1[k-1]
-        elif k <= len(s2) + len(s1):
-            return s2[k-len(s1)-1]
-        return -1
-
-print(kthFactor(2,2))
+from typing import List
+class Solution:
+    def longestMonotonicSubarray(self, nums: List[int]) -> int:
+        i, j, n = 1, -1, len(nums)
+        sti = 0
+        std = 0
+        result = 0
+        while i < n or j > -n:
+            if nums[i-1] < nums[i]:
+                sti += 1
+                i+=1
+            elif nums[i-1] >= nums[i]:
+                result = max(result, sti)
+                sti = 0
+                i+=1
+            if nums[j-1] > nums[j]:
+                std += 1
+                j -= 1
+            elif nums[j-1] <= nums[j]:
+                result = max(result, std)
+                std = 0
+                j-=1
+        print(result)
+        return result
+Solution().longestMonotonicSubarray([3,2,1])
