@@ -1,21 +1,18 @@
+from typing import List
 class Solution:
-    def areAlmostEqual(self, s1: str, s2: str) -> bool:
-        i, j = 0, len(s2) - 1
-        count = 0
-        while i < j:
-            if s1[i] == s2[i]:
-                i += 1
-            if s1[j] == s2[j]:
-                j -= 1
-            
-            if s1[i] != s2[i] and s1[j] != s2[j]:
-                if s1[i] == s2[j] and s1[j] == s2[i]:
-                    count += 1
-                    i += 1
-                    j -= 1
-                else:
-                    return False
-                
-        return count <= 1
-
-print(Solution().areAlmostEqual("bank", "kanb"))
+    def sumOfGoodNumbers(self, nums: List[int], k: int) -> int:
+        n = len(nums)
+        s = 0
+        for i in range(n):
+            is_good = True
+            for j in range(i-k, i+k+1, 1):
+                if j < 0 or j >= n:
+                    continue
+                if nums[j] >= nums[i]:
+                    is_good = False
+                    break
+            if is_good:
+                s += nums[i]
+            print(nums[i], is_good)
+        return s
+print(Solution().sumOfGoodNumbers([1,3,2,1,5,4], 2))
